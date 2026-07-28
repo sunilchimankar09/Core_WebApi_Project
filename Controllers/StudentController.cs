@@ -16,7 +16,7 @@ namespace WebApi_Test.Controllers
         [HttpGet("personInfo")]
         public IActionResult personInfo()
         {
-            return Ok("Sunil Narayan Chimankar");
+            return Ok("Indu Narayan Chimankar");
         }
     }
 }
