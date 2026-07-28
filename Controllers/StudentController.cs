@@ -18,5 +18,11 @@ namespace WebApi_Test.Controllers
         {
             return Ok("Indu Narayan Chimankar");
         }
+
+        [HttpGet("City")]
+        public IActionResult City()
+        {
+            return Ok("Pune");
+        }
     }
 }
