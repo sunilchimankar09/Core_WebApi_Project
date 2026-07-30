@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
 using WebApi_Test.Model;
+using WebApi_Test.Repository;
 
 namespace WebApi_Test.Controllers
 {
@@ -10,6 +11,12 @@ namespace WebApi_Test.Controllers
     [ApiController]
     public class EmplyoeeController : ControllerBase
     {
+        private readonly IEmployee _employeeRepository;
+        public EmplyoeeController(IEmployee employeeRepository)
+        {
+            _employeeRepository = employeeRepository;
+        }
+
         [HttpGet]
         public IActionResult Details()
         {
@@ -173,6 +180,13 @@ namespace WebApi_Test.Controllers
 
             };
             return Ok(employees);
+        }
+
+        [HttpGet("GetEmployeeList")]
+        public ActionResult GetEmployeeList()
+        {
+            var res = _employeeRepository.GetAllEmployees();
+            return Ok(res);
         }
     }
 }
