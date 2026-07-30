@@ -1,4 +1,5 @@
-﻿using WebApi_Test.DbContextData;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApi_Test.DbContextData;
 using WebApi_Test.Model;
 
 namespace WebApi_Test.Repository
@@ -12,8 +13,8 @@ namespace WebApi_Test.Repository
         }
         public List<Employee> GetAllEmployees()
         {
-            
-           var result = _context.Employess.ToList();
+
+            var result = _context.Employess.FromSqlRaw("Employeedetails").ToList();
             return result;
         }
     }
