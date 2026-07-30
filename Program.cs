@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using WebApi_Test.DbContextData;
+using WebApi_Test.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +20,9 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBMS")));
+builder.Services.AddScoped<IEmployee, EmployeeRepository>();
 var app = builder.Build();
 
 
