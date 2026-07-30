@@ -188,5 +188,12 @@ namespace WebApi_Test.Controllers
             var res = _employeeRepository.GetAllEmployees();
             return Ok(res);
         }
+
+        [HttpPost("EmpSignupDetails")]
+        public async Task<IActionResult> EmpSignupDetails([FromBody]Emp_Signup emp)
+        {
+            var res = await _employeeRepository.EmpSignupDetails(emp);
+            return Ok(res);
+        }
     }
 }
